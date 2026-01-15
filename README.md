@@ -4,10 +4,8 @@
 
   1. Download the .tdesktop-theme file and import it inside the app
 
-  Or, alternatively
-
-  2. Just click add it via the link
-
+  Or, alternatively just add it via the link
+  
   https://t.me/addtheme/everforestdarkmedium
 
   screenshot if u really want
