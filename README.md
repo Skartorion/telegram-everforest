@@ -2,13 +2,12 @@
 
 ## Installation
 
-- 1. Via Telegram itself
+  1. Install the .tdesktop-theme file and import it inside the app
 
-  since telegram themes are compiled into some funny binary files the only viable option is to just apply it via Telegram itself
+  Or, alternatively
+
+  2. Just click on the link
 
   https://t.me/addtheme/everforestdarkmedium
-
-  ..and click apply
-
 
   meow
