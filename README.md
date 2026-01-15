@@ -9,7 +9,7 @@
   https://t.me/addtheme/everforestdarkmedium
 
   screenshot if u really want
-  ![Example Image](screenshot3.png)
+  ![Example Image](image.png)
 
 
 sorry for crappy readme
