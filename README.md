@@ -6,9 +6,12 @@
 
   Or, alternatively
 
-  2. Just click on the link
+  2. Just click add it via the link
 
   https://t.me/addtheme/everforestdarkmedium
 
   screenshot if u really want
   ![Example Image](screenshot3.png)
+
+
+sorry for crappy readme
