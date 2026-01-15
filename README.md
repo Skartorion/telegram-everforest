@@ -10,4 +10,5 @@
 
   https://t.me/addtheme/everforestdarkmedium
 
-  meow
+  screenshot if u really want
+  ![Example Image](screenshot3.png)
