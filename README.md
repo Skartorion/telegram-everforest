@@ -2,7 +2,7 @@
 
 ## Installation
 
-  1. Install the .tdesktop-theme file and import it inside the app
+  1. Download the .tdesktop-theme file and import it inside the app
 
   Or, alternatively
 
