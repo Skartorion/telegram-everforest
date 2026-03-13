@@ -15,4 +15,4 @@
 sorry for crappy readme
 
 
-Color scheme "Everforest" created by [Sainnhe Park](https://github.com/sainnhe). All rights reserved.
+Color scheme "Everforest" created by [Sainnhe Park](https://github.com/sainnhe).
