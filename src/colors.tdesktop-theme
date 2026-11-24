@@ -105,7 +105,7 @@ boxTitleAdditionalFg: #808080; // box title additional text (like in create grou
 boxTitleCloseFg: cancelIconFg; // settings close icon and box search cancel icon (like in contacts box)
 boxTitleCloseFgOver: cancelIconFgOver; // settings close icon and box search cancel icon (like in contacts box) with mouse over
 membersAboutLimitFg: #5e6065; // text in channel members box about the limit (max 200 last members are shown)
-contactsBg: #222528; // contacts (and some other) box row background
+contactsBg: #2d353b; // contacts (and some other) box row background
 contactsBgOver: #2d353b; // contacts (and some other) box row background with mouse over
 contactsNameFg: boxTextFg; // contacts (and some other) box row name text
 contactsStatusFg: #808080; // contacts (and some other) box row additional text (like last seen stamp)
@@ -139,7 +139,7 @@ dialogsVerifiedIconBg: #cceca0; // chat list verified icon background
 dialogsVerifiedIconFg: #2d353b; // chat list verified icon check
 dialogsSendingIconFg: #727272; // chat list sending message icon (clock)
 dialogsSentIconFg: #c3ed88; // chat list sent message tick / double tick icon
-dialogsUnreadBg: #7f9f53; // chat list unread badge background for not muted chat
+dialogsUnreadBg: #a7c080; // chat list unread badge background for not muted chat
 dialogsUnreadBgMuted: #495159; // chat list unread badge background for muted chat
 dialogsUnreadFg: #ffffff; // chat list unread badge text
 dialogsOnlineBadgeFg: #b9e67a; // chat list online status
@@ -176,7 +176,7 @@ dialogsRippleBg: #43474d; //
 dialogsRippleBgActive: #89a65d; // 
 dialogsForwardBg: dialogsBgActive; // forwarding panel background (when forwarding messages in the smallest window size)
 dialogsForwardFg: dialogsNameFgActive; // forwarding panel text (when forwarding messages in the smallest window size)
-searchedBarBg: #3a4047; // search results bar background (in chats list, contacts box..)
+searchedBarBg: #2d353b; // search results bar background (in chats list, contacts box..)
 searchedBarFg: #a8a8a8; // search results bar text (in chats list, contacts box..)
 topBarBg: #2d353b; // top bar background (in chat view, media overview..)
 emojiPanBg: windowBg; // emoji panel background
@@ -240,10 +240,10 @@ historyPeer8NameFg: #efb05d; // orange group member name
 historyPeer8NameFgSelected: #ffffff; // orange group member name in a selected message
 historyPeer8UserpicBg: #febb5b; // orange userpic background
 historyPeerUserpicFg: windowFgActive; // default userpic initials
-historyScrollBarBg: #8989897a; // scroll bar current rectangle, the bar itself in the chat view (adjusted)
-historyScrollBarBgOver: #6b6b6bbc; // scroll bar current rectangle with mouse over it in the chat view (adjusted)
-historyScrollBg: #5f5f5f4c; // scroll bar background (adjusted)
-historyScrollBgOver: #6262626b; // scroll bar background with mouse over the scroll bar (adjusted)
+historyScrollBarBg: #798d997a; // scroll bar current rectangle, the bar itself in the chat view (adjusted)
+historyScrollBarBgOver: #5c6f7abc; // scroll bar current rectangle with mouse over it in the chat view (adjusted)
+historyScrollBg: #52636c4c; // scroll bar background (adjusted)
+historyScrollBgOver: #55666f6b; // scroll bar background with mouse over the scroll bar (adjusted)
 historyPeer1UserpicBg2: #d45246; // the second red userpic background
 historyPeer2UserpicBg2: #46ba43; // the second green userpic background
 historyPeer3UserpicBg2: #e5ca77; // the second yellow userpic background (actually unused)
@@ -272,8 +272,8 @@ msgInDateFgSelected: #ffffff; // inbox selected message time text
 msgOutDateFg: #737f87; // outbox message time text
 msgOutDateFgSelected: #ffffff; // outbox selected message time text
 msgServiceFg: windowFgActive; // service message text (like date dividers or service message about the group title being changed)
-msgServiceBg: #3d3d3dc8; // service message background (like in a service message about group title being changed) (adjusted)
-msgServiceBgSelected: #494949; // service message selected text background (like in a service message about group title being changed) (adjusted)
+msgServiceBg: #353f45c8; // service message background (like in a service message about group title being changed) (adjusted)
+msgServiceBgSelected: #3f4c53; // service message selected text background (like in a service message about group title being changed) (adjusted)
 msgInReplyBarColor: #b1cd81; // inbox message reply outline
 msgInReplyBarSelColor: #ffffff; // inbox selected message reply outline
 msgOutReplyBarColor: #b1cd81; // outbox message reply outline
@@ -460,8 +460,9 @@ sideBarBgRipple: #22272b; // filters side bar ripple effect
 sideBarTextFg: #8d939e; // filters side bar text
 sideBarTextFgActive: #a6c877; // filters side bar active item text
 sideBarIconFg: #8d939e; // filters side bar icon
-sideBarIconFgActive: #b5da81; // filters side bar active item icon
-sideBarBadgeBg: #b5da81; // filters side bar badge background
+sideBarIconFgActive: #a7c080; // filters side bar active item icon
+sideBarBadgeBg: #a7c080; // filters side bar badge background
 sideBarBadgeBgMuted: #8d939e; // filters side bar unimportant badge background
 statisticsChartInactive: #313a43d8; // inactive area in footer of statistic charts
 statisticsChartActive: #596879d8; // sides in footer of statistic charts
+groupCallMenuBgRipple: #2d353b;
