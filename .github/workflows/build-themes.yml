@@ -2,26 +2,32 @@ name: Build Telegram themes
 
 on:
   push:
-    paths:
-      - 'src/**'
-      - '.github/workflows/build-themes.yml'
+    paths-ignore:
+      - everforest-dark-medium.tdesktop-theme
+      - everforest-light-medium.tdesktop-theme
   pull_request:
-    paths:
-      - 'src/**'
-      - '.github/workflows/build-themes.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+concurrency:
+  group: themes-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
 
-      - name: Package themes
+jobs:
+  validate:
+    name: Validate and package themes
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Build compressed themes
         shell: python
         run: |
           from pathlib import Path
@@ -43,10 +49,66 @@ jobs:
                   archive.write(background, arcname='background.png')
                   archive.write(colours, arcname='colors.tdesktop-theme')
               print(f'Created {target}')
+      - name: Verify theme archive integrity
+        shell: python
+        run: |
+          from pathlib import Path
+          from zipfile import ZipFile
 
-      - name: Upload packaged themes
+          for variant in ('dark', 'light'):
+              path = Path('dist') / f'everforest-{variant}-medium.tdesktop-theme'
+              with ZipFile(path) as archive:
+                  if sorted(archive.namelist()) != ['background.png', 'colors.tdesktop-theme']:
+                      raise SystemExit(f'Unexpected archive contents: {path}')
+                  bad = archive.testzip()
+                  if bad is not None:
+                      raise SystemExit(f'Corrupt archive member in {path}: {bad}')
+              print(f'Verified {path}')
+      - name: Upload installable themes
         uses: actions/upload-artifact@v4
         with:
-          name: everforest-telegram-themes
+          name: everforest-telegram-${{ github.sha }}
           path: dist/*.tdesktop-theme
           if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+
+  publish:
+    name: Commit themes to repository
+    needs: validate
+    if: >-
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+      github.ref_type == 'branch' &&
+      github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: everforest-telegram-${{ github.sha }}
+          path: dist
+      - name: Commit packages even when unchanged
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          if [ "$(git rev-parse HEAD)" != "$SOURCE_SHA" ]; then
+            echo "Branch advanced since this build; skipping stale packages."
+            exit 0
+          fi
+
+          install -m 644 dist/everforest-dark-medium.tdesktop-theme everforest-dark-medium.tdesktop-theme
+          install -m 644 dist/everforest-light-medium.tdesktop-theme everforest-light-medium.tdesktop-theme
+          git add -- everforest-dark-medium.tdesktop-theme everforest-light-medium.tdesktop-theme
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit --allow-empty -m "chore: update packaged Telegram themes [skip ci]"
+          git push origin "HEAD:$TARGET_BRANCH"
