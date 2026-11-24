@@ -1,0 +1,52 @@
+name: Build Telegram themes
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '.github/workflows/build-themes.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - '.github/workflows/build-themes.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Package themes
+        shell: python
+        run: |
+          from pathlib import Path
+          from zipfile import ZIP_DEFLATED, ZipFile
+
+          themes = {
+              'dark': ('src/background.png', 'src/colors.tdesktop-theme'),
+              'light': ('src/background-light.png', 'src/colors-light.tdesktop-theme'),
+          }
+          missing = [path for pair in themes.values() for path in pair if not Path(path).is_file()]
+          if missing:
+              raise SystemExit('Missing source files: ' + ', '.join(missing))
+
+          output = Path('dist')
+          output.mkdir(exist_ok=True)
+          for variant, (background, colours) in themes.items():
+              target = output / f'everforest-{variant}-medium.tdesktop-theme'
+              with ZipFile(target, 'w', compression=ZIP_DEFLATED) as archive:
+                  archive.write(background, arcname='background.png')
+                  archive.write(colours, arcname='colors.tdesktop-theme')
+              print(f'Created {target}')
+
+      - name: Upload packaged themes
+        uses: actions/upload-artifact@v4
+        with:
+          name: everforest-telegram-themes
+          path: dist/*.tdesktop-theme
+          if-no-files-found: error
