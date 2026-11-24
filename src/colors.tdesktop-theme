@@ -15,7 +15,7 @@ windowShadowFgFallback: windowBg; // gray: fallback for shadow without opacity
 shadowFg: #00000018; // most shadows (including opacity)
 slideFadeOutBg: #0000003c; // slide animation (chat to profile) fade out filling
 slideFadeOutShadowFg: windowShadowFg; // slide animation (chat to profile) fade out right section shadow
-imageBg: #000000; // image background fallback (when photo size is less than minimum allowed)
+imageBg: #232a2e; // image background fallback (when photo size is less than minimum allowed)
 imageBgTransparent: #ffffff; // image background when displaying an image with opacity where no opacity is needed
 activeButtonBg: #8aa068; // default active button background
 activeButtonBgOver: #92a76d; // default active button background with mouse over
