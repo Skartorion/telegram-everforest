@@ -9,7 +9,7 @@
 3. Star the repo if you liked the theme.
 
 ### Example
-![Everforest Dark Medium theme for Telegram Desktop](image.png)
+![Everforest Dark Medium theme for Telegram Desktop](example.png)
 
 Everforest Dark Medium for Telegram Desktop. Colours by [sainnhe](https://github.com/sainnhe/everforest).
 
