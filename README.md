@@ -9,7 +9,7 @@
 3. Star the repo if you liked the theme.
 
 ### Example
-![Everforest Dark Medium theme for Telegram Desktop](example.png "Also join our funny linux group @linux_pe")
+![Everforest Dark Medium theme for Telegram Desktop](assets/example.png "Also join our funny linux group @linux_pe")
 
 ### Light theme
 Install either by [this link](https://t.me/addtheme/everforestlightmedium) or download the [theme](everforest-light-medium.tdesktop-theme) manually and import in-app.
